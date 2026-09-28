@@ -5,28 +5,19 @@
 ```mermaid
 flowchart TD
 
-%% =========================
-%% ACTORES
-%% =========================
 subgraph ACTORES["ACTORES"]
   Conductor["Conductor"]
   Ciudadano["Ciudadano"]
-  Autoridad["Autoridad Vial\n(Provías / SUTRAN)"]
+  Autoridad["Autoridad Vial"]
   Admin["Administrador"]
 end
 
-%% =========================
-%% PRESENTACIÓN
-%% =========================
 subgraph PRESENTACION["PRESENTACIÓN"]
-  AppAndroid["App Android → Kotlin + TFLite"]
-  MapaWeb["Mapa Web → React + Leaflet"]
-  Panel["Panel Institucional → React"]
+  AppAndroid["App Android\nKotlin + TFLite"]
+  MapaWeb["Mapa Web\nReact + Leaflet"]
+  Panel["Panel Institucional\nReact"]
 end
 
-%% =========================
-%% LÓGICA DE NEGOCIO
-%% =========================
 subgraph NEGOCIO["LÓGICA DE NEGOCIO"]
   Deteccion["Detección y Clasificación"]
   Sincronizacion["Sincronización Offline"]
@@ -35,51 +26,44 @@ subgraph NEGOCIO["LÓGICA DE NEGOCIO"]
   Usuarios["Autenticación y Accesos"]
 end
 
-%% =========================
-%% DATOS
-%% =========================
 subgraph DATOS["DATOS"]
-  SQLite["SQLite · Buffer local"]
-  Kafka["Kafka · Cola de mensajes"]
+  SQLite["SQLite\nBuffer local"]
+  Kafka["Kafka\nCola de mensajes"]
   Postgres["PostgreSQL + PostGIS"]
   Redis["Redis · Caché"]
 end
 
-%% =========================
-%% SISTEMAS EXTERNOS
-%% =========================
 subgraph EXTERNOS["SISTEMAS EXTERNOS"]
   OSM["OpenStreetMap"]
-  Cloudflare["Cloudflare · CDN + SSL"]
-  FCM["Firebase Cloud Messaging"]
+  Cloudflare["Cloudflare\nCDN + SSL"]
+  FCM["Firebase\nCloud Messaging"]
 end
 
-%% =========================
-%% FLUJO PRINCIPAL
-%% =========================
 Conductor --> AppAndroid
 Ciudadano --> MapaWeb
 Autoridad --> Panel
 Admin --> Panel
 
-AppAndroid --> Deteccion
-AppAndroid --> Sincronizacion
-MapaWeb --> Anomalias
-Panel --> Anomalias
-Panel --> Usuarios
+ACTORES --> PRESENTACION
+PRESENTACION --> NEGOCIO
+NEGOCIO --> DATOS
+DATOS -->|integraciones| EXTERNOS
 
-Deteccion --> SQLite
-Sincronizacion --> Kafka
-Ingesta --> Kafka
-Ingesta --> Anomalias
-Anomalias --> Postgres
-Anomalias --> Redis
-Usuarios --> Postgres
+Conductor ~~~ Ciudadano
+Ciudadano ~~~ Autoridad
+Autoridad ~~~ Admin
 
-%% Sistemas externos
-MapaWeb --> OSM
-AppAndroid --> Cloudflare
-AppAndroid --> FCM
+Deteccion ~~~ Sincronizacion
+Sincronizacion ~~~ Ingesta
+Ingesta ~~~ Anomalias
+Anomalias ~~~ Usuarios
+
+SQLite ~~~ Kafka
+Kafka ~~~ Postgres
+Postgres ~~~ Redis
+
+OSM ~~~ Cloudflare
+Cloudflare ~~~ FCM
 ```
 
 ## Descripción
@@ -88,7 +72,7 @@ La arquitectura se organiza en tres capas principales:
 
 - **Presentación:** la app Android es el punto de entrada del conductor; el mapa web es accesible para cualquier ciudadano sin registro; el panel institucional requiere autenticación y está destinado a autoridades viales y administradores.
 
-- **Lógica de negocio:** contiene los módulos de detección y clasificación de anomalías (ejecutados localmente en el dispositivo), sincronización offline con patrón Store-and-Forward, ingesta de eventos vía Kafka, gestión del mapa de anomalías y control de accesos por roles.
+- **Lógica de negocio:** contiene los módulos de detección y clasificación de anomalías, sincronización offline con patrón Store-and-Forward, ingesta de eventos vía Kafka, gestión del mapa de anomalías y control de accesos por roles.
 
 - **Datos:** SQLite actúa como buffer local en el dispositivo, Kafka absorbe la ráfaga de sincronizaciones simultáneas, PostgreSQL con PostGIS almacena las anomalías geolocalizadas y Redis gestiona la caché del mapa público.
 
