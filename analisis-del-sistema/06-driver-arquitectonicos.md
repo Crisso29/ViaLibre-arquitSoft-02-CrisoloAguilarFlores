@@ -1,0 +1,11 @@
+# Drivers Arquitectónicos
+
+| ID | Driver arquitectónico | Origen | ¿Por qué influye en la arquitectura? |
+|---|---|---|---|
+| DA-01 | La app debe detectar anomalías sin que el conductor toque la pantalla en ningún momento del trayecto. | RF-01, AC-01 | Obliga a que toda la lógica de detección sea completamente pasiva y automática. El modelo de ML debe vivir dentro del dispositivo y ejecutarse en segundo plano sin intervención del usuario. |
+| DA-02 | El sistema debe funcionar sin internet durante más de 150 km continuos de la ruta. | RF-03, RF-04, AC-03 | Impone el patrón Store-and-Forward con SQLite como buffer local. Descarta cualquier arquitectura que dependa de conexión permanente al servidor. |
+| DA-03 | Hasta 300 dispositivos pueden sincronizar al mismo tiempo al recuperar señal en zonas urbanas. | RF-04, AC-07 | Requiere una cola de mensajes entre la app y el backend para absorber la ráfaga sin colapsar la base de datos. Define el uso de Kafka como intermediario de ingesta. |
+| DA-04 | Ningún dato personal del conductor puede quedar almacenado en el sistema. | RF-13, AC-04 | Condiciona el diseño del esquema de base de datos. El identificador del dispositivo debe hashearse de forma irreversible antes de salir de la app, nunca en el servidor. |
+| DA-05 | El backend debe crecer de monolito modular a servicios independientes sin reescribir el código. | RC-04 | Define la separación interna en módulos con interfaces claras desde el inicio. Cada módulo debe poder extraerse como servicio independiente en fases posteriores sin cambiar su lógica de negocio. |
+| DA-06 | El costo de infraestructura debe mantenerse en cero durante toda la vida del proyecto. | RC-06, RC-09 | Limita las opciones tecnológicas a herramientas de Free Tier permanente. Descarta servicios cloud de pago, bases de datos administradas externas y cualquier componente con costo por uso. |
+| DA-07 | El mapa web debe ser accesible para cualquier ciudadano sin registro, en menos de 2 segundos en conexión 3G. | RF-07, AC-02 | Exige una capa de caché entre la base de datos y el frontend. Define el uso de Redis para invalidación por evento y NGINX como proxy con compresión estática. |
