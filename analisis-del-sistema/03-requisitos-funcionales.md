@@ -17,12 +17,15 @@
 | RF-13 | El sistema debe anonimizar cada dispositivo emisor mediante un hash irreversible, sin almacenar ningún dato personal del conductor. |
 | RF-14 | El sistema debe registrar en un log de auditoría cada cambio de estado relevante, con fecha, hora y responsable de la acción. |
 
-Historia de usuario	Requisitos funcionales relacionados
-HU01 — Detección automática	RF-01, RF-02, RF-05
-HU02 — Alerta anticipada	RF-06
-HU03 — Funcionamiento sin señal	RF-03, RF-04
-HU04 — Consulta del mapa	RF-07, RF-08
-HU05 — Acceso sin registro	RF-07
-HU06 — Ranking de anomalías	RF-09
-HU07 — Exportación GeoJSON	RF-10
-HU08 — Gestión de accesos	RF-11, RF-12, RF-13, RF-14
+## Relación entre historias de usuario y requisitos funcionales
+
+| Historia de usuario | Requisitos funcionales relacionados |
+|---|---|
+| HU01 — Detección automática | RF-01, RF-02, RF-05 |
+| HU02 — Alerta anticipada | RF-06 |
+| HU03 — Funcionamiento sin señal | RF-03, RF-04 |
+| HU04 — Consulta del mapa | RF-07, RF-08 |
+| HU05 — Acceso sin registro | RF-07 |
+| HU06 — Ranking de anomalías | RF-09 |
+| HU07 — Exportación GeoJSON | RF-10 |
+| HU08 — Gestión de accesos | RF-11, RF-12, RF-13, RF-14 |
