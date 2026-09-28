@@ -1,6 +1,6 @@
 # ViaLibre — Sistema de Detección de Anomalías Viales
 
-![carrito](https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif)
+![carrito](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnprMGFlbzRiM3U1bmhnOXM5YjViYzU0eTY1MTJ2Z3NjMGxqZ21zeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TRatWPrA8t7GntcaNS/giphy.gif)
 
 ## Autor
 
