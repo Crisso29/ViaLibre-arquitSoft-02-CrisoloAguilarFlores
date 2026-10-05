@@ -59,7 +59,7 @@ flowchart TD
 
 ## Descripción de capas
 
-**Presentación:** la app Android es el punto de entrada del conductor — detecta anomalías en segundo plano sin que el conductor toque la pantalla. El panel web es la interfaz del administrador para monitorear el sistema, gestionar usuarios y exportar datos.
+**Presentación:** la app Android es el punto de entrada del conductor-detecta anomalías en segundo plano sin que el conductor toque la pantalla. El panel web es la interfaz del administrador para monitorear el sistema, gestionar usuarios y exportar datos.
 
 **Lógica de negocio:** cinco módulos con responsabilidades separadas dentro de un solo proceso. Detección y Clasificación corren localmente en el dispositivo con TFLite. Sincronización implementa el patrón Store-and-Forward con backoff exponencial. Ingesta de Eventos usa .NET Channels para absorber hasta 300 dispositivos sincronizando simultáneamente. Gestión de Anomalías aplica las reglas de validación y distingue anomalías persistentes de episódicas. Autenticación y Accesos controla el ingreso al panel con JWT y tres niveles de rol.
 
