@@ -1,10 +1,18 @@
 # Actores del Sistema
 
-| Actor | ¿Qué necesita hacer? |
-|---|---|
-| **Conductor** | Recorrer la vía con la app activa sin hacer nada adicional. Recibir alertas anticipadas sobre tramos peligrosos antes de llegar a ellos. |
-| **Ciudadano** | Consultar el estado actual de la Vía Los Libertadores desde el navegador antes de iniciar su viaje, sin registrarse ni instalar nada. |
-| **Autoridad Vial** (Provías / SUTRAN) | Acceder al panel institucional para ver el ranking de kilómetros con mayor densidad de anomalías y exportar datos para sus programas de mantenimiento. |
-| **Administrador del sistema** | Gestionar usuarios, configurar el sistema y supervisar la operación general de la plataforma. |
-| **Servidor backend** | Recibir los eventos detectados por la app, procesarlos y actualizar el mapa. |
-| **Servicio de mapas** (OpenStreetMap) | Proveer la cartografía base sobre la que se renderizan las anomalías detectadas. |
+En v1.0 el sistema tiene dos actores activos. Los demás están identificados para versiones futuras.
+
+| Actor | Tipo | Descripción | Interfaz |
+|---|---|---|---|
+| Conductor | Principal (v1.0) | Persona que transita la Vía Los Libertadores. Sus sensores detectan anomalías pasivamente. Puede ver el mapa del corredor. | App Android |
+| Administrador | Principal (v1.0) | Gestiona el sistema: usuarios, anomalías, auditoría, dashboard global. Es personal de CRISSO DEV S.A.C. | Panel web |
+| Empresa suscriptora | Futuro (v1.5+) | Empresas de transporte, aseguradoras. Acceden a analítica de flota y tramos. | Panel web |
+| Autoridad Vial | Futuro (v2.0+) | Provías Nacional, SUTRAN, gobiernos regionales. Acceden bajo convenio institucional. | Panel web |
+
+## Detalle de actores activos en v1.0
+
+**Conductor no registrado:** Instala la app, sus sensores aportan datos anónimamente. Ve solo el tramo demo Ayacucho–Vinchos (~65 km). No requiere correo ni contraseña.
+
+**Conductor registrado:** Se registra con correo verificado. Accede al mapa completo de 333 km, historial de recorridos (6 meses) y alertas anticipadas en ruta.
+
+**Administrador:** Accede al panel web con correo y contraseña. Ve el mapa completo con todas las anomalías, estadísticas globales, gestión de usuarios y log de auditoría.
