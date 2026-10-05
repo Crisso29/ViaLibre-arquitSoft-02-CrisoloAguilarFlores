@@ -1,29 +1,50 @@
-# ViaLibre — Sistema de Detección de Anomalías Viales
+# ViaLibre
+*Ayacucho, Perú · 2026*
 
-![carrito](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnprMGFlbzRiM3U1bmhnOXM5YjViYzU0eTY1MTJ2Z3NjMGxqZ21zeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TRatWPrA8t7GntcaNS/giphy.gif)
+## Contexto académico
 
-## Autor
+| Campo | Detalle |
+|---|---|
+| Curso vinculado | IS-488 Arquitectura de Software |
+| Docente IS-488 | Ing. Lizbeth Jaico Quispe |
+| Autor | Crisólogo Aguilar Flores-CRISSO DEV S.A.C. |
+| Semestre | 2026-II |
 
-Aguilar Flores, Crisólogo
+---
 
-## Descripción
 
-ViaLibre es una plataforma que detecta automáticamente baches, hundimientos
-y pavimento deteriorado en la Vía Los Libertadores (PE-28A, Ayacucho–Pisco),
-usando los sensores del celular Android de cada conductor que ya recorre la ruta.
-Sin botones, sin reportes manuales, sin distraer al conductor.
-Cada viaje mejora el mapa para el siguiente.
+![ViaLibre](assets/car.gif)
 
-## Caso de estudio
+## ViaLibre
 
-La Vía Los Libertadores es la ruta más peligrosa del Perú según el ONSV-MTC:
-72 siniestros y 138 fallecidos en solo 7 meses de 2024. El problema no es solo
-el estado del pavimento, sino que los conductores no familiarizados con la ruta
-encuentran los tramos críticos de sorpresa. ViaLibre cierra esa brecha.
+> *Cada viaje que haces mejora el camino del siguiente conductor.*
 
-## Curso
+La Vía Los Libertadores tiene 333 kilómetros, 138 fallecidos en 7 meses
+y cero información en tiempo real sobre el estado del pavimento.
+ViaLibre lo cambia — sin botones, sin reportes manuales, sin distraer
+al conductor un solo segundo.
 
-IS-488 Arquitectura de Software  
-Docente: Ing. Lizbeth Jaico Quispe  
-UNSCH — Escuela de Ingeniería de Sistemas  
-Semestre 2026-II
+---
+
+## El problema que resuelve
+
+El conductor que sale de Ayacucho hacia la costa no sabe qué se va a
+encontrar. Waze requiere que sueltes el volante en una curva a 3,800 msnm
+para reportar un bache. Las inspecciones de Provías se hacen cada 90 días.
+Y el conocimiento de los choferes veteranos muere con su retiro.
+
+Existe una asimetría de información crítica entre quien conoce la vía
+de memoria y quien la recorre por primera vez. ViaLibre convierte los
+datos de los sensores de cada celular en conocimiento colectivo
+accesible para todos.
+
+---
+
+## Cómo funciona
+
+La app Android usa el acelerómetro, giroscopio y GPS del celular del
+conductor. No hace nada más. No distrae. No consume datos. No necesita
+señal — y eso importa, porque más del 50% del corredor no tiene cobertura.
+
+Cada anomalía detectada se guarda localmente. Al recuperar señal,
+se sincroniza automáticamente. El mapa mejora en cada viaje.
