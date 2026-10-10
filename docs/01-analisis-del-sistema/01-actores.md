@@ -1,6 +1,6 @@
 # Actores del Sistema
 
-En v1.0 el sistema tiene dos actores activos. Los demás están identificados para versiones futuras.
+En v1.0 el sistema tiene solo dos actores activos para limitar el alcance para su desarrollo en este ciclo 2026-II. Los demás están identificados para versiones futuras.
 
 | Actor | Tipo | Descripción | Interfaz |
 |---|---|---|---|
